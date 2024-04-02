@@ -1,0 +1,10 @@
+parameters:
+  - name: environment
+    values: [dev, tst, acc, prd]
+
+jobs:
+  - template: deployment-stack.yml@SharedTemplates
+    parameters:
+      environment: ${{ parameters.environment }}
+      template: infra/main.bicep
+      templateParams: infra/main.${{ parameters.environment }}.bicepparam

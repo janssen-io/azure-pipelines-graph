@@ -1,0 +1,12 @@
+trigger: none
+
+resources:
+  repositories:
+    - repository: SharedTemplates
+      type: git
+      name: SharedTemplates
+
+stages:
+  - template: D365/extract.yml@SharedTemplates
+    parameters:
+      solution: base

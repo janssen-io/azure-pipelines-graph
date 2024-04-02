@@ -1,0 +1,35 @@
+trigger: main
+
+resources:
+  repositories:
+    - repository: SharedTemplates
+      type: git
+      name: SharedTemplates
+
+stages:
+  - stage: build
+    displayName: Build Project
+    jobs:
+      - template: dotnet.yml@SharedTemplates
+        parameters:
+          project: src/MyApp.sln
+
+      - template: owasp.yml@SharedTemplates
+        parameters:
+          project: src/MyApp.sln
+
+  - template: ./deploy.yml
+    parameters:
+      environment: dev
+
+  - template: ./deploy.yml
+    parameters:
+      environment: tst
+
+  - template: ./deploy.yml
+    parameters:
+      environment: acc
+
+  - template: ./deploy.yml
+    parameters:
+      environment: prd

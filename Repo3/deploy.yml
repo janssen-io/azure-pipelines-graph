@@ -1,0 +1,28 @@
+trigger: none
+
+resources:
+  repositories:
+    - repository: SharedTemplates
+      type: git
+      name: SharedTemplates
+
+stages:
+  - template: D365/deploy.yml@SharedTemplates
+    parameters:
+      environment: dev
+      solution: base
+
+  - template: D365/deploy.yml@SharedTemplates
+    parameters:
+      environment: tst
+      solution: base
+
+  - template: D365/deploy.yml@SharedTemplates
+    parameters:
+      environment: acc
+      solution: base
+
+  - template: D365/deploy.yml@SharedTemplates
+    parameters:
+      environment: prd
+      solution: base

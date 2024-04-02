@@ -1,0 +1,6 @@
+
+variables:
+- name: azureSpn
+  value: azure-dev
+- name: powerPlatformSpn
+  value: power-dev

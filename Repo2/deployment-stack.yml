@@ -1,0 +1,10 @@
+parameters:
+  - name: environment
+    values: [ dev, tst, acc, prd ]
+  - name: template
+  - name: templateParams
+
+variables:
+  - template: ./variables/${{ parameters.environment }}.yml
+
+# jobs, etc.

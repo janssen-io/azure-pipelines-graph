@@ -1,0 +1,23 @@
+trigger: none
+
+resources:
+  repositories:
+    - repository: SharedTemplates
+      type: git
+      name: SharedTemplates
+
+stages:
+  - stage: build
+    displayName: Build Project
+    jobs:
+      - template: bicep.yml@SharedTemplates
+        parameters:
+          entrypoint: infra/main.bicep
+
+      - template: dotnet.yml@SharedTemplates
+        parameters:
+          project: src/MyApp.sln
+
+      - template: owasp.yml@SharedTemplates
+        parameters:
+          project: src/MyApp.sln

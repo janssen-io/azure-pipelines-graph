@@ -1,0 +1,5 @@
+variables:
+- name: azureSpn
+  value: azure-tst
+- name: powerPlatformSpn
+  value: power-tst
